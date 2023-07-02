@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -41,8 +43,8 @@ public class BookPublisher implements Serializable {
 
     private String uf;
     
-    @JsonIgnore
-    @OneToMany(mappedBy = "bookPublisher")
-    private List<Book> books = new ArrayList<>();
+//    @JsonIgnore
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bookPublisher")
+//    private List<Book> books = new ArrayList<>();
 
 }

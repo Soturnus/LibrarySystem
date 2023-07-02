@@ -2,7 +2,10 @@ package com.soturno.librarySystem.entity;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -13,6 +16,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -37,9 +41,18 @@ public class Book implements Serializable {
 	private String status;
 
 	private String author;
-
-	@ManyToOne
-	@JoinColumn(name = "id_publisher")
-	private BookPublisher bookPublisher;
+	
+//	@JsonIgnore
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name = "id_publisher")
+//	private BookPublisher bookPublisher;
+	
+	public Book(String name, String subject, String tumble, String status, String author) {
+		this.name = name;
+		this.subject = subject;
+		this.tumble = tumble;
+		this.status = status;
+		this.author = author;
+	}
 
 }
